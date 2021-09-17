@@ -1,4 +1,3 @@
-
 class Sockets {
 
     constructor( io ) {
@@ -8,15 +7,9 @@ class Sockets {
     }
 
     socketEvents() {
-        
         // Conexion
         this.io.on('connection', ( socket ) => { 
-            //console.log('Cliente conectado: ' + socket.id );
-            // socket.emit( 'mensaje-bienvenida', { 
-            //     msg: 'Bienvenido al server',
-            //     fecha: new Date(),
-            // });
-
+            console.log('Cliente conectado: ' + socket.id );
             // Escuchar el evento
             socket.on( 'mensaje-to-server', ( data ) => {
                 console.log(data);
@@ -24,9 +17,7 @@ class Sockets {
                 this.io.emit( 'mensaje-from-server', data ); // Envia el mensaje a todos los clientes conectados
             });
         });
-
     }
-
 }
 
 module.exports = Sockets;
